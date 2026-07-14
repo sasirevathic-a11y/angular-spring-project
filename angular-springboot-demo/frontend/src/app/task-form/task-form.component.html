@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>{{ isEditMode ? 'Edit Task' : 'New Task' }}</h1>
+
+  <p *ngIf="errorMessage" style="color: #dc2626;">{{ errorMessage }}</p>
+
+  <form (ngSubmit)="onSubmit()">
+    <label>Title</label>
+    <input type="text" [(ngModel)]="task.title" name="title" required>
+
+    <label>Description</label>
+    <textarea [(ngModel)]="task.description" name="description" rows="4"></textarea>
+
+    <label>
+      <input type="checkbox" [(ngModel)]="task.completed" name="completed">
+      Completed
+    </label>
+
+    <div style="margin-top: 16px;">
+      <button type="submit" class="btn-primary">Save</button>
+      <button type="button" class="btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
